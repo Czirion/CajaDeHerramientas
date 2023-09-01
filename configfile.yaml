@@ -1,0 +1,113 @@
+## RUN PARAMS
+
+# MANDATORY PARAMS
+
+# path to FASTA file of reference genome
+# default = workflow/resources/pangenomeMTB_consensus.fasta
+# genome_file: /path/to/reference_genome.fasta
+genome_file: workflow/resources/pangenomeMTB_consensus.fasta
+
+# path to BED file of reference genome gaps
+# default = workflow/resources/pangenomeMTB_genome_gaps.bed
+# genomegaps_file: /path/to/reference_genome_gaps.bed
+genomegaps_file: workflow/resources/pangenomeMTB_genome_gaps.bed
+
+# path to BED file of excluded reference genome locations regarding to the PE/PPE, PE-PGRS and drug-resistance associated genes
+# default = workflow/resources/exclusion/pangenomeMTB_excluded_loci.bed
+# exclude_regions_file: /path/to/reference_genome_excluded_loci.bed
+exclude_regions_file: workflow/resources/pangenomeMTB_excluded_loci.bed
+
+# kraken v1 reference database.
+# MiniKraken DB is suggested (https://ccb.jhu.edu/software/kraken/dl/minikraken_20171019_8GB.tgz).
+# kraken_db: /path/to/minikraken_20171019_8GB
+# kraken_db: minikraken_20171019_8GB
+kraken_db: /work/user/transflow/minikraken_20171019_8GB/
+
+# path to Text file including all samples information. One sample per line.
+# The line should start with the "sample" column and contain at least a "date" column.
+# For transmission network reconstruction, both "longitude" and "latitude" columns could be used.
+# metadata_file: /path/to/samples.txt
+metadata_file: /work/user/transflow/L2/metadata_date_L2_genomes.tsv
+
+# PARAMS WITH DEFAULT VALUES
+
+# path to directory with fastq files
+# default 'fastq' in working directory
+# fastqdir: /path/to/fastq/
+fastqdir: /work/user/transflow/datos/raw_reads/L2
+
+# fastq files are assumed to be of the format sample_1.fastq.gz
+# use "fastqpostfix" for different file name formats 
+# e.g. for the format sample_R1.fastq.gz put fastqpostfix: R
+
+# The ids of all fastq files in the directory can be matched with glob patterns. Otherwise, only ids in the metadata file will be parsed.
+# default = false
+glob_files: false
+
+# threads used by tools for each sample
+sample_threads: 16
+
+## Filter params
+# the quality value that a base is qualified. Default 20 means phred quality >=Q20 is qualified.
+base_quality: 15
+
+# minimum length of reads to be kept with trimmomatic
+# default = 50
+read_minimum_length: 50
+
+# minimum allele frequency to be considered 'homozygous' variant call
+# default = 0.75
+allele_frequency_threshold: 0.75
+
+# minimum mapping quality for reads to be used for variant calling
+# default = 10
+mapping_quality_threshold: 10
+
+# minimum GATK depth (DP) value to be considered valid variant call
+# default = 5
+depth_threshold: 5
+
+## Tool params
+# minimum overlap of paired end reads for merging
+# default = 10
+flash_overlap: 10
+
+# cutoff for MTBC sequences percentage. 
+kraken_cutoff: 90
+
+# filtering out non-MTBC reads with kraken. That would allow for contaminated samples to still be reliably processed.
+# Default is false
+MTBC_reads_only: false
+
+# output files prefix
+output_prefix: samples
+
+# fontsize for all rownames and colnames
+# default is null then the pipeline will auto adjust font size in pheatmap.
+heatmap_font_size: null
+
+# transmission clustering method. Both [SNP] and [trans] methods are supported.
+# default = trans
+method: SNP
+
+# parameters for SNP-based clustering: SNP threshold
+# default = 12
+snp_threshold: 12
+
+# transmission threshold is the threshold under which the estimated number of intermediate transmissions must be in order for two cases to be defined as clustered.
+# default = 15
+transmission_threshold: 15
+
+# clock rate. 
+# default = 0.5 SNPs/genome/year
+clock_rate: 0.5
+
+# transmission rate is the rate at which the estimated number of intermediate transmissions must be.
+# default = 1.2
+transmission_rate: 1.2
+
+# using coordinate to reconstruct transmission network.
+coordinate: true
+
+# epidemiological characteristics
+characteristics: anatomical_origin who_outcome diabetes hiv smoker inject_drug_user resistance_dlm resistance_cfz resistance_mxf resistance_bdq resistance_inh resistance_lzd resistance_rif resistance_rfb resistance_lev resistance_emb resistance_eth resistance_kan resistance_ami pattern
