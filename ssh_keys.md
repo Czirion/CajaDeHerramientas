@@ -1,5 +1,6 @@
 # Add SSH Keys to a server and connect using a nickname
 
+## To create and add the SSH key to a server
 Go to your directory `~/.ssh` and see what keys you already have. Probably you have the key files `id_ed25519` and `id_ed25519.pub`.
 
 Run the following to create the new keys: 
@@ -17,12 +18,14 @@ ssh-copy-id -i ~/.ssh/id_ed25519_duke.pub user@ip.address.of.server # Change the
 # When prompted, give the password for the server
 ~~~
 
+## To register your SSH key at Duke
 Go to this page [https://idms-web-selfservice.oit.duke.edu/advanced](https://idms-web-selfservice.oit.duke.edu/advanced) 
 - Enter your credentials.  
 - Click on something like "Register a new SSH key".  
 - Paste the content of your `.pub` key file into the gray box that appears.  
 - Click "Add Key".  
 
+## To set a nickname for a server
 Make a text file named `config` in the path `~/.ssh/` with this inside:
 ~~~
 Host *
@@ -30,11 +33,13 @@ Host *
     IdentityFile ~/.ssh/id_ed25519_duke #Put the name of your ssh-key files here (without the .pub extension)
     ForwardAgent yes
 
-Host serverNameExample # Here put a nickname to the server
-    HostName dcc-login.oit.duke.edu # Here put the correct domain of your server
+Host nickName # Here put a nickname to the server
+    HostName dcc-login.oit.duke.edu # Here put the correct domain/ip address of your server
     User usernameExample # Here put the username that you have in said server
 
 # Repeat the last chunk for as many servers as you want to include, changing the proper details.
 ~~~
+
+Now you can log in to the server with `ssh nickName`
 
 Have a good day afterward.
