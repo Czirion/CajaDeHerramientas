@@ -1,4 +1,4 @@
-# Add SSH Keys to server and conect with shortcut
+# Add SSH Keys to a server and connect using nickname
 
 In the local computer run:
 ~~~
@@ -6,11 +6,11 @@ ssh-keygen -t ed25519 -C "your_email@example.com"
 ssh-copy-id -i ~/.ssh/name-of-key.pub user@ip.address.of.server #And give the password for the server
 ~~~
 
-Go to this page [https://idms-web-selfservice.oit.duke.edu/advanced](https://idms-web-selfservice.oit.duke.edu/advanced).
-Enter your credentials.
-Click on something like "Register a new SSH key".
-Paste the content of your `.pub` key file into the gray box that appears.
-Click "Add Key".
+- Go to this page [https://idms-web-selfservice.oit.duke.edu/advanced](https://idms-web-selfservice.oit.duke.edu/advanced).  
+- Enter your credentials.  
+- Click on something like "Register a new SSH key".  
+- Paste the content of your `.pub` key file into the gray box that appears.  
+- Click "Add Key".  
 
 Make a text file named `config` in the path `~/.ssh/` with this inside:
 ~~~
@@ -26,4 +26,4 @@ Host serverNameExample # Here put a nickname to the server
 # Repeat the last chunk of the file for as many servers as you want to include
 ~~~
 
-Have a good day afterwards.
+Have a good day afterward.
