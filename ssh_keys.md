@@ -4,7 +4,7 @@ Go to your directory `~/.ssh` and see what keys you already have. Probably you h
 
 Run the following to create the new keys: 
 ~~~
-ssh-keygen -t ed25519 -C "your_email@example.com" # Change the address to your e-mail.
+ssh-keygen -t ed25519 -C "your_email@example.com" # Change the address to your e-mail (leave the quotes there)
 # When it prompts for a key name you can just click Enter to use the default names, but if you already have
 # the key files with the names above they might get overwritten.
 # So you can write a new name for these specific key files, for example: id_ed25519_duke
